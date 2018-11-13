@@ -21,7 +21,11 @@
 .App-link {
   color: #61dafb;
 }
-
+.mainContainer{
+  background-color: #333;
+  min-height: 100%;
+  min-width:100%;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
