@@ -21,7 +21,7 @@
 .App-link {
   color: #61dafb;
 }
-.mainContainer{
+body{
   background-color: #333;
   min-height: 100%;
   min-width:100%;
