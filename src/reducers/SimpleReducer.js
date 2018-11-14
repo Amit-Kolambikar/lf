@@ -5,7 +5,6 @@ export default(state = {cart :{}}, action) => {
       return {cart :action.newCart}
     case 'updateCart':
       return {cart :action.newCart}
-      
     default:
       return state
   }

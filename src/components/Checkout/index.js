@@ -11,6 +11,7 @@ import {productList} from '../../data/productList.js';
 import React, {Component} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Table from '@material-ui/core/Table';
@@ -19,7 +20,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {connect} from 'react-redux';
-import {updateCart} from '../../actions/simpleAction'
+import {fetchCart} from '../../actions/simpleAction'
+import {getLocalStorageData} from '../../api';
 
 const data = productList;
 const styles = theme => ({
@@ -56,15 +58,15 @@ const styles = theme => ({
 class Checkout extends Component {
   constructor(props) {
     super(props);
-    console.log("constructor",this.props.cart);
+    console.log("constructor", this.props.cart);
     this.state = {
       cart: []
     }
   }
 
   componentDidMount() {
-    const cart = this.props.cart;
-    console.log("componentDidMount cart",this.props.cart);
+    const cart = getLocalStorageData();
+    console.log("componentDidMount cart", cart);
     Object
       .keys(cart)
       .map((item) => {
@@ -88,6 +90,12 @@ class Checkout extends Component {
   render() {
     const {classes} = this.props;
     const {cart} = this.state;
+    const tempArray = cart.map(item => {
+      return Number(item.price) * Number(item.qty)
+    })
+    const totalQty = tempArray.reduce(function (a, b) {
+      return a + b;
+    }, 0);
     return (
       <div>
         <Grid container className={classes.root} direction="row">
@@ -105,19 +113,44 @@ class Checkout extends Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {cart.map(row => {
+                  {cart.map((item, index) => {
                     return (
-                      <TableRow key={row.id}>
+                      <TableRow key={index}>
                         <TableCell component="th" scope="row">
-                          {cart.title}
+                          {item.title}
                         </TableCell>
-                        <TableCell numeric>{cart.price}</TableCell>
-                        <TableCell numeric>{cart.qty}</TableCell>
+                        <TableCell numeric>{item.price}</TableCell>
+                        <TableCell numeric>{item.qty}</TableCell>
                       </TableRow>
                     );
                   })}
                 </TableBody>
               </Table>
+              <Typography
+                variant="h5"
+                style={{
+                marginTop: 40,
+                textAlign: 'right'
+              }}>Total : {totalQty}$</Typography>
+              <Button
+                size="large"
+                color="primary"
+                variant="outlined"
+                style={{
+                marginTop: 30,
+                marginBottom: 30,
+                marginLeft:'auto',
+                marginRight:'auto',
+                display:'block'
+              }}
+                onClick={() => {
+                this
+                  .props
+                  .history
+                  .push({pathname: '/payment'});
+              }}>
+                Proceed to Payment
+              </Button>
             </div>
           </Grid>
         </Grid>
@@ -131,13 +164,12 @@ Checkout.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-
 const mapDispatchToProps = {
-  updateCart
+  fetchCart
 };
 
-const mapStateToProps=(state)=> {
-  console.log("mapStateToProps",state.simpleReducer.cart);
+const mapStateToProps = (state) => {
+  console.log("mapStateToProps", state.simpleReducer.cart);
   return {cart: state.simpleReducer.cart};
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Checkout));

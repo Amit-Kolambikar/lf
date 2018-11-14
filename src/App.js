@@ -6,6 +6,7 @@ import ProductsGrid from './components/ProductsGrid'
 import ProductItem from './components/ProductItem'
 import Header from './components/Header'
 import Checkout from './components/Checkout'
+import Payment from './components/Payment'
 import history from './history'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,6 +30,7 @@ class App extends Component {
             <Switch>
               <Route path="/products/:id" component={ProductItem} />
               <Route path="/checkout" component={Checkout} />
+              <Route path="/payment" component={Payment} />
               <Route path="" component={ProductsGrid} />
               <Route component={() => <div>404 Not found</div>} />
             </Switch>

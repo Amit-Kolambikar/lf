@@ -11,4 +11,10 @@ export const addToCart = (newCart) => dispatch => {
      newCart
     })
    }
+
+   export const fetchCart = () => dispatch => {
+    dispatch({
+     type: 'fetchCart',
+    })
+   }
    
