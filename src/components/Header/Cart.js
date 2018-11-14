@@ -8,6 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import {productList} from '../../data/productList.js';
 import {getLocalStorageData} from '../../api';
 import {connect} from 'react-redux';
+import {toast} from 'react-toastify';
 import {updateCart} from '../../actions/simpleAction'
 
 const data = productList;
@@ -60,6 +61,14 @@ class Cart extends Component {
   }
   deleteCartItem = (id) => {
     localStorage.removeItem(id);
+    toast.error(` Removed from cart!`, {
+      position: "bottom-left",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false
+    });
     const newCart = getLocalStorageData();
     this
       .props

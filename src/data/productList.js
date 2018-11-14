@@ -20,28 +20,28 @@ export const productList = [
     "title": "Nike Air Grey",
     "desc": "Your order of 5.000.000₫ or more gets free standard delivery.Standard delivered ",
     "quantity": 0,
-    "price":400
+    "price":150
   }, {
     "id": 4,
     "url": require("../data/images/4.jpeg"),
     "title": "Nike Air Pink",
     "desc": "Your order of 5.000.000₫ or more gets free standard delivery.Standard delivered ",
     "quantity": 3,
-    "price":400
+    "price":220
   }, {
     "id": 5,
     "url": require("../data/images/5.jpeg"),
     "title": "Nike Air Jordan",
     "desc": "Your order of 5.000.000₫ or more gets free standard delivery.Standard delivered ",
     "quantity": 5,
-    "price":400
+    "price":330
   }, {
     "id": 6,
     "url": require("../data/images/6.jpeg"),
     "title": "Nike Air Zoom",
     "desc": "Your order of 5.000.000₫ or more gets free standard delivery.Standard delivered ",
     "quantity": 11,
-    "price":400
+    "price":101
   }, {
     "id": 7,
     "url": require("../data/images/7.jpeg"),
@@ -55,14 +55,14 @@ export const productList = [
     "title": "Nike Air Zoom",
     "desc": "Your order of 5.000.000₫ or more gets free standard delivery.Standard delivered ",
     "quantity": 32,
-    "price":400
+    "price":699
   }, {
     "id": 9,
     "url": require("../data/images/9.jpeg"),
     "title": "Nike Air Zoom",
     "desc": "Your order of 5.000.000₫ or more gets free standard delivery.Standard delivered ",
     "quantity": 78,
-    "price":400
+    "price":444
   }, {
     "id": 10,
     "url": require("../data/images/10.jpeg"),
@@ -76,7 +76,7 @@ export const productList = [
     "title": "Nike Air Zoom",
     "desc": "Your order of 5.000.000₫ or more gets free standard delivery.Standard delivered ",
     "quantity": 0,
-    "price":400
+    "price":123
   }, 
   {
     "id": 12,
